@@ -1,0 +1,102 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "vn.begreat.weatherforcecast"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro',
+                    'proguard-rules-retrofit.pro'
+        }
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // For Kotlin projects
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    flavorDimensions "version"
+    productFlavors {
+        dev {
+            dimension "version"
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
+        }
+        prod {
+            dimension "version"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    implementation project(path: ':data')
+
+    implementation Libs.CORE_KTX
+    implementation Libs.APP_COMPAT
+    implementation Libs.CONSTRAINT_LAYOUT
+    implementation Libs.RECYCLER_VIEW
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation "androidx.fragment:fragment-ktx:1.2.5"
+    implementation 'com.facebook.stetho:stetho:1.5.1'
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
+    implementation 'org.aviran.cookiebar2:cookiebar2:1.1.4'
+
+    /// Life cycle
+    implementation Libs.LIFECYCLE_VIEWMODEL
+    implementation Libs.LIFECYCLE_LIVEDATA
+    implementation Libs.LIFECYCLE_COMMON
+    implementation Libs.LIFECYCLE_REACTIVE_STREAM
+    testImplementation Libs.ARCH_TEST
+    testImplementation "org.mockito:mockito-core:3.5.13"
+
+    // Room
+    implementation "androidx.room:room-runtime:2.2.5"
+    kapt "androidx.room:room-compiler:2.2.5"
+
+    // Rx Java
+    implementation Libs.RX_JAVA_3
+    implementation Libs.RX_ANDROID_3
+
+    //Dagger
+    // Hilt
+    implementation "com.google.dagger:hilt-android:${Version.Hilt}"
+    kapt "com.google.dagger:hilt-android-compiler:${Version.Hilt}"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:${Version.HiltX}"
+    kapt "androidx.hilt:hilt-compiler:${Version.HiltX}"
+
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+}

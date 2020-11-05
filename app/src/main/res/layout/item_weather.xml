@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="vn.begreat.data.models.Weather" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="100dp"
+        tools:layout_height="100dp">
+
+        <vn.begreat.weatherforcecast.PrefixTextView
+            android:id="@+id/tvDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:text="@{model.displayDate}"
+            app:layout_constraintBottom_toTopOf="@+id/tvAvgTemp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tvPrefix="Date:"
+            tools:text="dfsdf" />
+
+        <vn.begreat.weatherforcecast.PrefixTextView
+            android:id="@+id/tvAvgTemp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:text="@{model.minTemp}"
+            app:layout_constraintBottom_toTopOf="@+id/tvPressure"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDate"
+            app:tvPrefix="Min temperature:"
+            tools:text="dfsdf" />
+
+
+        <vn.begreat.weatherforcecast.PrefixTextView
+            android:id="@+id/tvPressure"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:text="@{model.maxTemp}"
+            app:layout_constraintBottom_toTopOf="@+id/tvHumidity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAvgTemp"
+            app:tvPrefix="Max temperature:"
+            tools:text="dfsdf" />
+
+
+        <vn.begreat.weatherforcecast.PrefixTextView
+            android:id="@+id/tvHumidity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:text="@{model.humidity}"
+            app:layout_constraintBottom_toTopOf="@+id/tvDesc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPressure"
+            app:tvPrefix="Humidity:"
+            tools:text="dfsdf" />
+
+
+        <vn.begreat.weatherforcecast.PrefixTextView
+            android:id="@+id/tvDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:paddingBottom="6dp"
+            android:text="@{model.weatherStateName}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHumidity"
+            app:tvPrefix="Weather:"
+            tools:text="dfsdf" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/separator"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

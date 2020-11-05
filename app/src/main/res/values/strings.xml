@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">WeatherForceCast</string>
+    <string name="city">City</string>
+    <string name="get_weather">Get Weather</string>
+    <string name="error_happened">Error Happened</string>
+    <string name="error_unexpected">Can not force cast weather, please try again</string>
+    <string name="action_close">Close</string>
+    <string name="error_no_network">No network connection</string>
+</resources>
